@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -8,8 +7,8 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-heading: var(--font-space-grotesk);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -46,10 +45,47 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* (1) Editorial --color-* entries — paste inside `@theme inline`: */
+
+  /* Editorial design tokens: surfaces */
+  --color-canvas: var(--canvas);
+  --color-canvas-soft: var(--canvas-soft);
+  --color-surface-card: var(--surface-card);
+  --color-surface-strong: var(--surface-strong);
+
+  /* Hairlines */
+  --color-hairline: var(--hairline);
+  --color-hairline-soft: var(--hairline-soft);
+  --color-hairline-strong: var(--hairline-strong);
+
+  /* Text */
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-body-strong: var(--body-strong);
+  --color-muted-ink: var(--muted-ink);
+  --color-muted-soft: var(--muted-soft);
+  --color-on-primary: var(--on-primary);
+
+  /* Brand */
+  --color-primary-active: var(--primary-active);
+
+  /* Overlay pair: light cream type + dark scrim ink */
+  --color-overlay-cream: var(--overlay-cream);
+  --color-overlay-ink: var(--overlay-ink);
+
+  /* Terminal palette — macOS-style window dots */
+  --color-term-red: var(--term-red);
+  --color-term-yellow: var(--term-yellow);
+  --color-term-green: var(--term-green);
+
+  /* Semantic */
+  --color-success: var(--success);
+  --color-error: var(--error);
 }
 
 :root {
-  --background: oklch(1 0 0);
+  /* --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -80,7 +116,66 @@
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar-ring: oklch(0.708 0 0); */
+
+  /* (2) Editorial :root values — paste inside `:root`: */
+
+  /* Brand accent: used scarcely, primary CTAs + wordmark only */
+  --primary: #f54e00;
+  --primary-foreground: #ffffff;
+  --primary-active: #d04200;
+  --on-primary: #ffffff;
+
+  /* Surfaces: warm cream canvas, never pure white */
+  --canvas: #f7f7f4;
+  --canvas-soft: #fafaf7;
+  --surface-card: #ffffff;
+  --surface-strong: #e6e5e0;
+
+  /* Hairlines: depth via 1px lines, no shadows */
+  --hairline: #e6e5e0;
+  --hairline-soft: #efeee8;
+  --hairline-strong: #cfcdc4;
+
+  /* Text: warm near-black ink */
+  --ink: #26251e;
+  --body: #5a5852;
+  --body-strong: #26251e;
+  --muted-ink: #807d72;
+  --muted-soft: #a09c92;
+
+  /* Terminal palette — macOS-style window dots (stack.config mock only) */
+  --term-red: #ff5f57;
+  --term-yellow: #febc2e;
+  --term-green: #28c840;
+
+  /* Overlay pair: cream type + ink scrim for media-backed regions */
+  --overlay-cream: #f7f6f1;
+  --overlay-ink: #0f0f0c;
+
+  /* Semantic */
+  --success: #1f8a65;
+  --error: #cf2d56;
+
+  /* (3) Shadcn -> editorial remap — paste inside `:root`
+    (replace the starter's standalone shadcn default values): */
+
+  --background: var(--canvas);
+  --foreground: var(--ink);
+  --card: var(--surface-card);
+  --card-foreground: var(--ink);
+  --popover: var(--surface-card);
+  --popover-foreground: var(--ink);
+  --secondary: var(--surface-strong);
+  --secondary-foreground: var(--ink);
+  --muted: var(--canvas-soft);
+  --muted-foreground: var(--body);
+  --accent: var(--hairline-soft);
+  --accent-foreground: var(--ink);
+  --destructive: var(--error);
+  --border: var(--hairline);
+  --input: var(--hairline);
+  --ring: var(--hairline-strong);
 }
 
 .dark {
@@ -123,8 +218,5 @@
   }
   body {
     @apply bg-background text-foreground;
-  }
-  html {
-    @apply font-sans;
   }
 }
